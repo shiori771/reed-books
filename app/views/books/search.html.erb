@@ -1,2 +1,11 @@
-<h1>Books#search</h1>
-<p>Find me in app/views/books/search.html.erb</p>
+<div class='content'>
+  <div id="search-box">
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <%= f.text_field :keyword, placeholder: "keyword", class: "search-input"%>
+        <%= f.submit "search", class: "search-btn" %>
+    <% end %>
+  </div>
+  <h2>検索結果</h2>
+  <div id='book_list'>
+  </div>
+</div>
