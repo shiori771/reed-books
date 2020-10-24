@@ -1,24 +1,60 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| Column   | Type   | Option      |
+| -------- | ------ | ----------- |
+| name     | string | null: false |
+| email    | string | null: false |
+| password | string | null: false |
+| profile  | text   | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :user_readings
+- has_many :readings, through: user_readings
+- has_many :memos
 
-* Configuration
 
-* Database creation
+## readings テーブル
 
-* Database initialization
+| Column    | Type   | Option      |
+| --------- | ------ | ----------- |
+| image_url | text   | null: false |
+| title     | string | null: false |
+| author    | string | null: false |
+| url       | text   | null: false |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- has_many :user_readings
+- has_many :user, through: user_readings
+- has_one :memo
 
-* Deployment instructions
 
-* ...
+## user_readings テーブル
+
+| Column  | Type       | Option                         |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| reading | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :reading
+
+
+## memos テーブル
+
+| Column    | Type       | Option                         |
+| --------- | ---------- | ------------------------------ |
+| review_id | integer    |                                |
+| text      | text       |                                |
+| user      | references | null: false, foreign_key: true |
+| reading   | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :reading
+- belongs_to :user
