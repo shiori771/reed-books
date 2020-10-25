@@ -1,7 +1,14 @@
-<%= @books.first(10).each do |book| %>
-
-    <%= link_to (image_tag(book.medium_image_url)), "#" %>
-    <%= book.title %>
-    <%= book.author %>
- 
-<% end %>
+<div class= "search_results">
+    <% @books.first(10).each do |book| %>
+        <div class="book_image"> 
+            <%= link_to (image_tag(book.medium_image_url)), "#" %>
+        </div>
+        <div class="book_title">
+            <%= book.title %>
+        </div>
+        <div class="book_author"> 
+            <%= book.author %>
+        </div>
+    </div>
+    <% end %>
+</div>

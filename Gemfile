@@ -55,3 +55,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rakuten_web_service'
+gem 'pry-rails'
+gem 'pry-byebug'
