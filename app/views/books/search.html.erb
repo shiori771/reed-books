@@ -1,0 +1,15 @@
+<%= render "shared/header" %>
+<div class="content">
+  <div class="search-box", id="search">
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <div class= "form-group">
+        <%= f.text_field :keyword, placeholder: "keyword", class: "search-input"%>
+        <%= f.submit "search", class: "btn-search" %>
+      </div>
+    <% end %>
+  </div>
+  <h2>Results</h2>
+  <% if @books.present? %>
+    <%= render 'books/book'%>
+  <% end %>
+</div>
