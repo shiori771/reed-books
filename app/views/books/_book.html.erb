@@ -1,5 +1,6 @@
 <div class= "search_results">
-    <% @books.first(10).each do |book| %>
+    <% @books.each do |book| %>
+    <div class="book">
         <div class="book_image"> 
             <%= link_to (image_tag(book.medium_image_url)), "#" %>
         </div>
