@@ -15,6 +15,9 @@
         <li class="gnav-item">
           <%=link_to 'LOGIN',new_user_session_path, class: 'gnav-link'%>
         </li>
+        <li class="gnav-item">
+          <%=link_to 'GEST LOGIN', users_guest_sign_in_path, method: :post,  class: 'gnav-link'%>
+        </li>
       <% end %>
       </ul>
     </nav>
