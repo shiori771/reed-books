@@ -1,0 +1,11 @@
+.error-alert {
+  display: flex;
+  justify-content: center;
+}
+
+.error-message {
+  font-size: 15px;
+  list-style: circle;
+  color:#A67F5D;
+  padding-top: 10px;
+}
