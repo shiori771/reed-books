@@ -62,3 +62,8 @@ gem 'pry-rails'
 gem 'pry-byebug'
 gem 'devise'
 gem 'font-awesome-rails'
+
+group :production do
+  # gem 'rails_12factor'
+  gem 'unicorn', '5.4.1'
+end
