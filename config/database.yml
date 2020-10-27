@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: reed_books_production
-  username: reed_books
+  username: root
   password: <%= ENV['REED_BOOKS_DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
