@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   end
  root to: "books#search"
  get "search", to: "books#search" 
+ resources :books, only: [:index, :new, :create]
 end
