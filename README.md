@@ -11,12 +11,12 @@
 
 ### Association
 
-- has_many :user_readings
-- has_many :readings, through: user_readings
+- has_many :books_users
+- has_many :books, through: :books_users
 - has_many :memos
 
 
-## readings テーブル
+## books テーブル
 
 | Column    | Type   | Option      |
 | --------- | ------ | ----------- |
@@ -27,12 +27,12 @@
 
 ### Association
 
-- has_many :user_readings
-- has_many :user, through: user_readings
+- has_many :books_users
+- has_many :users, through: :books_users
 - has_one :memo
 
 
-## user_readings テーブル
+## readings_users テーブル
 
 | Column  | Type       | Option                         |
 | ------- | ---------- | ------------------------------ |
@@ -42,7 +42,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :reading
+- belongs_to :book
 
 
 ## memos テーブル
