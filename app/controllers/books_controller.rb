@@ -1,31 +1,39 @@
 class BooksController < ApplicationController
   def search
-    @books = RakutenWebService::Books::Book.search(title: params[:keyword]) if params[:keyword]
-  end
-
-
-
-  def index
-    @books = Book.includes(:user)
-  end
-
-  def new
-    @book = Book.new
-  end
-
-  def create
-    @book = Book.new(book_params)
-    if @book.save
-      redirect_to root_path
+    if params[:keyword].present?
+      @books = RakutenWebService::Books::Book.search(title: params[:keyword]) if params[:keyword]
     else
-      render :new
+      render :search
     end
   end
 
+
+  def new
+    @url = RakutenWebService::Books::Book.search(params[:item_url])
+    @image = RakutenWebService::Books::Book.search(params[:large_image_url])
+    @title = RakutenWebService::Books::Book.search(params[:title])
+    @author = RakutenWebService::Books::Book.search(params[:author])
+    @url = RakutenWebService::Books::Book.search(params[:url])
+  end
+
+  # def index
+  #   @books = Book.includes(:user)
+  # end
+
+
+  # def create
+  #   @book = Book.new(book_params)
+  #   if @book.save
+  #     redirect_to root_path
+  #   else
+  #     render :new
+  #   end
+  # end
+
   private
 
-  def book_params
-    params.require(:book).permit(:image_url, :title, :author, :url).merge(user_id: current_user.id)
-  end
+  # def book_params
+  #   params.permit(:isbn, :medium_image_url, :title, :author, :url).merge(user_id: current_user.id)
+  # end
 
 end
