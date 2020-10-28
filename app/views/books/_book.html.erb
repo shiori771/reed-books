@@ -1,23 +1,29 @@
 <div class= "search_results">
     <% @books.each do |book| %>
-    <div class="book">
-    <%= form_with url: new_book_path, method: :get,  local: true do |f| %>
-    <%= f.hidden_field :url, value: book.isbn%> 
-        <div class="book_image"> 
-            <%=f.hidden_field :large_image_url, value: book.medium_image_url %>
-            <%=image_tag(book.large_image_url) %>
+        <div class="book">
+            <%= form_with url: new_book_path, method: :get,  local: true do |f| %>
+                <div class= "book-isbn">
+                    <%= f.hidden_field :url, value: book.isbn%> 
+                </div>
+                <div class="book_image"> 
+                    <%=f.hidden_field :large_image_url, value: book.medium_image_url %>
+                    <%=image_tag(book.large_image_url) %>
+                </div>
+                <div class="book_title">
+                    <%= f.hidden_field :title, value: book.title%>
+                    <%=book.title %>
+                </div>
+                <div class="book_author"> 
+                    <%= f.hidden_field :author, value: book.author%>
+                    <%=book.author %>
+                </div>
+                <div class="book-url">
+                    <%= f.hidden_field :url, value: book.item_url%>
+                </div>
+                <div class="book-send-btn">
+                    <%= f.submit "CHECK", class: "check-btn"%>
+                </div>
+            <% end %>
         </div>
-        <div class="book_title">
-        <%= f.hidden_field :title, value: book.title%>
-            <%=book.title %>
-        </div>
-        <div class="book_author"> 
-        <%= f.hidden_field :author, value: book.author%>
-            <%=book.author %>
-        <%= f.hidden_field :url, value: book.item_url%> 
-        <%= f.submit "CHECK"%>
-        </div>
-    <% end %>
-    </div>
     <% end %>
 </div>
