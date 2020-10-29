@@ -6,7 +6,7 @@
                     <%= f.hidden_field :url, value: book.isbn%> 
                 </div>
                 <div class="book_image"> 
-                    <%=f.hidden_field :large_image_url, value: book.medium_image_url %>
+                    <%=f.hidden_field :large_image_url, value: book.large_image_url %>
                     <%=image_tag(book.large_image_url) %>
                 </div>
                 <div class="book_title">
