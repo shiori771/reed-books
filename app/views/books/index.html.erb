@@ -1,7 +1,8 @@
 <%= render 'shared/header'%>
 
 <div class="book-new" >
-  <% @books.each do |book| %>
+<% @books.each do |book| %>
+  <% if current_user.id == book.user_id %>
     <div class="reading-book">
       <div class="reading-book-image">
         <%=image_tag  book.image_url %>
@@ -14,5 +15,6 @@
         </div>
     </div>
   <% end %>
+<% end %>
 </div>
      
