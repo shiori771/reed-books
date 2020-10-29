@@ -9,7 +9,6 @@ class BooksController < ApplicationController
 
 
   def new
-    @url = RakutenWebService::Books::Book.search(params[:item_url])
     @image = RakutenWebService::Books::Book.search(params[:large_image_url])
     @title = RakutenWebService::Books::Book.search(params[:title])
     @author = RakutenWebService::Books::Book.search(params[:author])
@@ -22,7 +21,6 @@ class BooksController < ApplicationController
 
 
   def create
-    binding.pry
     @book = Book.new(book_params)
     if @book.save
       redirect_to root_path
