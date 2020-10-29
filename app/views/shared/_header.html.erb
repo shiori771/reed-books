@@ -5,14 +5,16 @@
         <li class="gnav-item">
           <%=link_to 'LOGOUT',destroy_user_session_path, method: :delete,  class: 'gnav-item gnav-link'%>
         </li>
-        <li class="gnav-item"
-          ><%=link_to 'READING', books_path, class: 'gnav-link' %>
+        <li class="gnav-item">
+          <%=link_to 'READING', books_path, class: 'gnav-link' %>
         </li>
-        <li class="gnav-item"
-          ><%=link_to 'SEARCH', search_path, class: 'gnav-link' %>
+        <li class="gnav-item">
+          <%=link_to 'SEARCH', search_path, class: 'gnav-link' %>
         </li>
         <li class="gnav-item"><a class="gnav-link" href="#">BOOK LOG</a></li>
-        <li class="gnav-item"><a class="gnav-link" href="#">READING</a></li>
+        <li class="gnav-item">
+          <%=link_to 'READING', books_path, class: 'gnav-link' %>
+        </li>
       <% else %>
         <li class="gnav-item">
           <%=link_to 'SIGN UP',new_user_registration_path, class: 'gnav-item gnav-link'%>

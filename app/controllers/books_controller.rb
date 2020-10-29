@@ -15,9 +15,9 @@ class BooksController < ApplicationController
     @url = RakutenWebService::Books::Book.search(params[:url])
   end
 
-  # def index
-  #   @books = Book.includes(:user)
-  # end
+  def index
+    @books = Book.includes(:user).order('created_at DESC')
+  end
 
 
   def create

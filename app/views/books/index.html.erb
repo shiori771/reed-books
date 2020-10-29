@@ -1,0 +1,18 @@
+<%= render 'shared/header'%>
+
+<div class="book-new" >
+  <% @books.each do |book| %>
+    <div class="reading-book">
+      <div class="reading-book-image">
+        <%=image_tag  book.image_url %>
+      </div>
+        <div class="reading-book-item title-font">
+          <%= book.title%>
+        </div>
+        <div class="book-item author-font">
+          <%= book.author%>
+        </div>
+    </div>
+  <% end %>
+</div>
+     
