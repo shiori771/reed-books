@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+
   def search
     if params[:keyword].present?
       @books = RakutenWebService::Books::Book.search(title: params[:keyword]) if params[:keyword]
@@ -23,7 +24,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to books_path
     else
-      render :new
+      redirect_back(fallback_location: new_book_path)
     end
   end
 
