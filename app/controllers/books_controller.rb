@@ -13,6 +13,7 @@ class BooksController < ApplicationController
   end
 
   def new
+    @isbn = RakutenWebService::Books::Book.search(params[:isbn])
     @image = RakutenWebService::Books::Book.search(params[:large_image_url])
     @title = RakutenWebService::Books::Book.search(params[:title])
     @author = RakutenWebService::Books::Book.search(params[:author])
@@ -31,7 +32,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.permit(:image_url, :title, :author, :url, :user_id)
+    params.permit(:isbn, :image_url, :title, :author, :url, :user_id)
   end
 
 end
