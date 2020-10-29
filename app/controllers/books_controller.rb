@@ -7,6 +7,9 @@ class BooksController < ApplicationController
     end
   end
 
+  def index
+    @books = Book.includes(:user).order('created_at DESC')
+  end
 
   def new
     @image = RakutenWebService::Books::Book.search(params[:large_image_url])
@@ -14,12 +17,7 @@ class BooksController < ApplicationController
     @author = RakutenWebService::Books::Book.search(params[:author])
     @url = RakutenWebService::Books::Book.search(params[:url])
   end
-
-  def index
-    @books = Book.includes(:user).order('created_at DESC')
-  end
-
-
+  
   def create
     @book = Book.new(book_params)
     if @book.save
