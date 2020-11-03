@@ -13,26 +13,35 @@ class BooksController < ApplicationController
   end
 
   def new
-    @isbn = RakutenWebService::Books::Book.search(params[:isbn])
-    @image = RakutenWebService::Books::Book.search(params[:large_image_url])
-    @title = RakutenWebService::Books::Book.search(params[:title])
-    @author = RakutenWebService::Books::Book.search(params[:author])
-    @url = RakutenWebService::Books::Book.search(params[:url])
+    @book = Book.new()
+      @isbn = RakutenWebService::Books::Book.search(params[:isbn])
+      @image = RakutenWebService::Books::Book.search(params[:large_image_url])
+      @title = RakutenWebService::Books::Book.search(params[:title])
+      @author = RakutenWebService::Books::Book.search(params[:author])
+      @url = RakutenWebService::Books::Book.search(params[:url])
+      @authenticity_token = RakutenWebService::Books::Book.search(params[:authenticity_token])
   end
   
   def create
     @book = Book.new(book_params)
-    if @book.save
+     if @book.save
       redirect_to books_path
     else
-      redirect_back(fallback_location: new_book_path)
+      redirect_to action: :index
+      # redirect_back(fallback_location: new_book_path)
+    end
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    if @book.destroy
+      redirect_to action: :index
     end
   end
 
   private
 
   def book_params
-    params.permit(:isbn, :image_url, :title, :author, :url, :user_id)
+    params.require(:book).permit(:id, :isbn, :image_url, :title, :author, :url, :authenticity_token).merge(user_id: current_user.id)
   end
-
 end

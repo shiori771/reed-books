@@ -26,6 +26,11 @@
           <%=link_to 'GEST LOGIN', users_guest_sign_in_path, method: :post,  class: 'gnav-link'%>
         </li>
       <% end %>
+      <li class="gnav-item gnav-link">
+      <% if user_signed_in?%>
+        <%= current_user.name %>
+      <% end %>
+      </li>
       </ul>
     </nav>
 

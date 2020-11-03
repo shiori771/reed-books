@@ -58,16 +58,14 @@
 /*media Queries 767
 ----------------------------------------------------*/
 @media screen and (max-width: 767px) {
-  .searched-book {
-    padding-top: 100px;
+  .searched-book-text {
     padding-left: 30px;
-    display: block;
   }
   
   .book-item {
     padding-bottom: 20px;
     padding-top: 10px;
-    width: 80%;
+    width: 90%;
   }
 
   .title-font {

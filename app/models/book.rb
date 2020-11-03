@@ -10,4 +10,5 @@ class Book < ApplicationRecord
 
   validates :user_id,  uniqueness: { scope: :title } 
 
+  
 end

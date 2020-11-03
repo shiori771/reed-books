@@ -15,20 +15,19 @@
       </div>
       <div class="link-btn">
         <%=link_to 'rakuten', @url.params, class: "btn btn-url"%>
-        <% if user_signed_in?%>
-          <%=form_with model: @book, url:books_path,  method: :post, local: true do |f|%>
+          <%=form_with model: @book, url:books_path(@book.id),  method: :post, local: true do |f|%>
              <%=f.hidden_field :isbn, value: @isbn.params %>
+             <%=f.hidden_field :title, value: @title.params %>
              <%=f.hidden_field :image_url, value: @image.params %>
-             <%= f.hidden_field :title, value: @title.params%>
              <%= f.hidden_field :author, value: @author.params%>
-             <%= f.hidden_field :url, value: @url.params%>
-             <%= f.hidden_field :user_id, value: current_user.id%>
-             <%= f.submit "READING", class: "btn-reading"%>
-          <% end %>
+             <%= f.hidden_field :url, value: @url.params%> 
+             <%= f.hidden_field :user_id, value: current_user.id%> 
+             <%= f.submit "READING", class: "btn-reading"%>         
+        <% end %> 
           <%=link_to 'WANA READ', '#', class: "btn btn-wana"%>
-        <% end %>
       </div>   
      </div>
    </div>
 </div>
+
      
