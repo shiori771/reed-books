@@ -13,8 +13,8 @@
         <div class="book-item author-font">
           <%= book.author%>
         </div>
+    <%=link_to 'delete', book_path(book.id), method: :delete, class: "btn btn-url" %>
     </div>
-    <%=link_to '削除', book_path(book.id), method: :delete %>
   <% end %>
 <% end %>
 </div>
