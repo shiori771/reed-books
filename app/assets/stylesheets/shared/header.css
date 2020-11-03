@@ -82,3 +82,27 @@ li {
   display: none;
 }
 
+/*media Queries 767
+----------------------------------------------------*/
+@media screen and (max-width: 767px) {
+  .gnav {
+    padding: 15px 0;
+  }
+
+  .gnav-item {
+    font-size: 14px;
+    padding: 2px 15px;
+  }
+
+  .gnav-link {
+    padding: 0;
+  }
+
+  .gnav-link:hover {
+    opacity: 1;
+  }
+
+  .gnav-link:after {
+    display: none;
+  }
+}

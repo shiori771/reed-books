@@ -1,0 +1,21 @@
+<%= render 'shared/header'%>
+
+<div class="book-new" >
+<% @books.each do |book| %>
+  <% if current_user.id == book.user_id %>
+    <div class="reading-book">
+      <div class="reading-book-image">
+        <%=image_tag  book.image_url %>
+      </div>
+        <div class="reading-book-item title-font">
+          <%= book.title%>
+        </div>
+        <div class="book-item author-font">
+          <%= book.author%>
+        </div>
+    <%=link_to 'delete', book_path(book.id), method: :delete, class: "btn btn-url" %>
+    </div>
+  <% end %>
+<% end %>
+</div>
+     
