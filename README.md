@@ -11,38 +11,26 @@
 
 ### Association
 
-- has_many :books_users
-- has_many :books, through: :books_users
+- has_many :books
 - has_many :memos
 
 
 ## books テーブル
 
-| Column    | Type   | Option      |
-| --------- | ------ | ----------- |
-| image_url | text   | null: false |
-| title     | string | null: false |
-| author    | string | null: false |
-| url       | text   | null: false |
+| Column    | Type       | Option                         |
+| --------- | ---------- | ------------------------------ |
+| isbn      | text       | null: false                    |
+| image_url | text       | null: false                    |
+| title     | string     | null: false                    |
+| author    | string     |                                |
+| url       | text       | null: false                    |
+| user      | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_many :books_users
-- has_many :users, through: :books_users
+- has_many :users
 - has_one :memo
 
-
-## readings_users テーブル
-
-| Column  | Type       | Option                         |
-| ------- | ---------- | ------------------------------ |
-| user    | references | null: false, foreign_key: true |
-| reading | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :book
 
 
 ## memos テーブル
@@ -52,9 +40,9 @@
 | review_id | integer    |                                |
 | text      | text       |                                |
 | user      | references | null: false, foreign_key: true |
-| reading   | references | null: false, foreign_key: true |
+| book      | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :reading
 - belongs_to :user
+- belongs_to :book
